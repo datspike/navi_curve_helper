@@ -144,21 +144,25 @@ while True:
         if cancel:
             continue
 
-        d, e, f = find_abc(x1, y1, x2, y2, x3, y3, a, b, c)
+        try:
+            d, e, f = find_abc(x1, y1, x2, y2, x3, y3, a, b, c)
 
-        xn1 = float(values['new_ghz_low'])
-        yn1 = float(values['new_volts_low'])
-        xn2 = float(values['new_ghz_mid'])
-        yn2 = float(values['new_volts_mid'])
-        xn3 = float(values['new_ghz_high'])
-        yn3 = float(values['new_volts_high'])
+            xn1 = float(values['new_ghz_low'])
+            yn1 = float(values['new_volts_low'])
+            xn2 = float(values['new_ghz_mid'])
+            yn2 = float(values['new_volts_mid'])
+            xn3 = float(values['new_ghz_high'])
+            yn3 = float(values['new_volts_high'])
 
-        save_values_to_file(a, b, c, x1, y1, x2, y2, x3, y3, xn1, yn1, xn2, yn2, xn3, yn3)
+            save_values_to_file(a, b, c, x1, y1, x2, y2, x3, y3, xn1, yn1, xn2, yn2, xn3, yn3)
 
-        # corrections
-        yn3 = yn3 + 0.013
-        yn1 = yn1 - 0.009
-        a_new, b_new, c_new = find_abc(xn1, yn1, xn2, yn2, xn3, yn3, d, e, f)
+            # corrections
+            yn3 = yn3 + 0.013
+            yn1 = yn1 - 0.009
+            a_new, b_new, c_new = find_abc(xn1, yn1, xn2, yn2, xn3, yn3, d, e, f)
+        except Exception:
+            sg.popup('Can\'t calculate the curve parameters, are the values you\'ve entered correct?')
+            continue
 
         window['a_mod'].update("{:.6f}".format(a_new))
         window['b_mod'].update("{:.6f}".format(b_new))
