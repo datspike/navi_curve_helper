@@ -118,23 +118,31 @@ while True:
         break
 
     if event == 'calc_abc':
-        a = float(values['a_stock'])
-        b = float(values['b_stock'])
-        c = float(values['c_stock'])
+        try:
+            a = float(values['a_stock'])
+            b = float(values['b_stock'])
+            c = float(values['c_stock'])
 
-        # top, mid, bottom, x - GHz, y - Volts
-        x1 = float(values['ghz_low'])
-        y1 = float(values['volts_low'])
-        x2 = float(values['ghz_mid'])
-        y2 = float(values['volts_mid'])
-        x3 = float(values['ghz_high'])
-        y3 = float(values['volts_high'])
+            # top, mid, bottom, x - GHz, y - Volts
+            x1 = float(values['ghz_low'])
+            y1 = float(values['volts_low'])
+            x2 = float(values['ghz_mid'])
+            y2 = float(values['volts_mid'])
+            x3 = float(values['ghz_high'])
+            y3 = float(values['volts_high'])
+        except Exception:
+            sg.popup('Check that you\'ve entered all the values')
+            continue
 
+        cancel = False
         l = [a,b,c,x1,y1,x2,y2,x3,y3]
         for i in l:
             if i > 3:
                 sg.popup('Check that you\'ve entered all voltage/clock points in GHz and volts, e.g. 2.1 Ghz, 1.2 V')
-                continue
+                cancel = True
+                break
+        if cancel:
+            continue
 
         d, e, f = find_abc(x1, y1, x2, y2, x3, y3, a, b, c)
 
