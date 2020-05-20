@@ -2,7 +2,7 @@
 ## About
 This program allows you to calculate the offset curve parameters to set the "stock" voltages your RX Navi card via MPT.
 ## How to run
-Run *.exe from releases page or:
+Run *.exe from [releases page](https://github.com/datspike/navi_curve_helper/releases) or:
 - download the sources and make a venv
 - `pip install -r requirements.txt`
 - `python gui.py`
@@ -12,4 +12,4 @@ Run *.exe from releases page or:
 ## How to use
 Sorry, only Russian language guide for now
 
-[![guide video](https://img.youtube.com/vi/YOUTUBE_VIDEO_ID_HERE/0.jpg)](https://www.youtube.com/watch?v=YOUTUBE_VIDEO_ID_HERE)
+[![guide video_rus](https://img.youtube.com/vi/ncRGUxFgAtI/0.jpg)](https://www.youtube.com/watch?v=ncRGUxFgAtI)
